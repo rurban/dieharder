@@ -61,5 +61,6 @@ typedef enum {
    D_ADD_MY_TYPES,
    D_STD_TEST,
    D_RNGS,
+   D_DAB_HWD,
    N_DEBUG
 } Debug;

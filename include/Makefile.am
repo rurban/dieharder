@@ -6,6 +6,7 @@ nobase_include_HEADERS = \
 	dieharder/dab_dct.h \
 	dieharder/dab_filltree.h \
 	dieharder/dab_filltree2.h \
+	dieharder/dab_hwd.h \
 	dieharder/dab_monobit2.h \
 	dieharder/diehard_2dsphere.h \
 	dieharder/diehard_3dsphere.h \

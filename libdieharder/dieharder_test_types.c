@@ -186,4 +186,7 @@ void dieharder_test_types()
  //dh_num_other_tests++;
 #endif
 
+ ADD_TEST(&dab_hwd_dtest);
+ dh_num_other_tests++;
+ 
 }
