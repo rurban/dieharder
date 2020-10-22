@@ -1,0 +1,15 @@
+theme: jekyll-theme-minimal
+plugins:
+  - jekyll-relative-links
+relative_links:
+  enabled: true
+  collections: true
+include:
+  - manual/dieharder.html
+  - manual/dieharder.pdf
+  - QUALITY.html
+  - QUALITY.md
+  - README
+  - NOTES
+  - AUTHORS
+  - ChangeLog
