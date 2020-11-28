@@ -99,6 +99,7 @@ libdieharder_la_SOURCES = \
 	rng_dev_random.c \
 	rng_dev_arandom.c \
 	rng_dev_urandom.c \
+	rng_drand48.c \
 	rng_file_input.c \
 	rng_file_input_raw.c \
 	rngs_gnu_r.c \

@@ -110,6 +110,8 @@
  GSL_VAR const gsl_rng_type *gsl_rng_xorshift1024plus;		/* rurban Oct 2020 */
  GSL_VAR const gsl_rng_type *gsl_rng_xorshift1024star;		/* rurban Oct 2020 */
 
+ GSL_VAR const gsl_rng_type *gsl_rng_drand48;			/* rurban Nov 2020 */
+
  /*
   * rng global vectors and variables for setup and tests.
   */

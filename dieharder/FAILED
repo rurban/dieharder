@@ -58,6 +58,7 @@ random32-bsd_g029_a.out:42:8
 xorshift32_g251_a_Y1.out:44:5
 jsf64_g223_a.out:45:1
 ran3_g020_a.out:48:4
+drand48_g262_a_Y1.out:52:3
 vax_g059_a.out:54:8
 rand_g021_a.out:57:6
 random8-bsd_g035_a.out:57:7

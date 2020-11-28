@@ -244,6 +244,8 @@ void dieharder_rng_types()
   ADD_RNG (xorshift1024plus);
   ADD_RNG (xorshift1024star);
 
+  ADD_RNG (drand48); // as in perl5
+
   MYDEBUG(D_TYPES){
     printf("# startup:  Found %u dieharder rngs.\n",dh_num_dieharder_rngs);
   }
