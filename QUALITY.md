@@ -11,7 +11,7 @@ _no FAILED, 0 WEAK_
 
 | rng function                |    ints/sec| doubles/sec |
 |:----------------------------|-----------:|------------:|
-|wyrand_g210_a_Y1.out:0       |    319345  |     283551  |
+|wyrand_g210_a_Y1.out:0       |    313853  |     250344  |
 |xoshiro128+_g213_a.out:0     |    289544  |     257579  |
 |xoroshiro64ss_g214_a.out:0   |    261519  |     267279  |
 |xoshiro128++_g211_a.out:0    |    260260  |     246457  |
