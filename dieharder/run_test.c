@@ -29,7 +29,7 @@ void run_test()
    }
  }
  if(dtest_num >= 0 && dtest_num < MAXTESTS && dh_test_types[dtest_num]){
-   execute_test(dtest_num);
+   (void)execute_test(dtest_num);
  } else {
    fprintf(stderr,"Error:  Invalid dtest_num = %d.  No test found.\n",dtest_num);
    exit(1);
@@ -38,7 +38,7 @@ void run_test()
 }
 
 
-int execute_test(int dtest_num)
+double execute_test(int dtest_num)
 {
 
  unsigned int i, need_more_p;
@@ -105,8 +105,8 @@ int execute_test(int dtest_num)
    smallest_p = 0.5;
    for(i = 0; i < dh_test_types[dtest_num]->nkps ; i++){
      if(0.5 - fabs(dieharder_test[i]->ks_pvalue - 0.5) < smallest_p) {
-	   smallest_p = 0.5 - fabs(dieharder_test[i]->ks_pvalue - 0.5);
-	 }
+       smallest_p = 0.5 - fabs(dieharder_test[i]->ks_pvalue - 0.5);
+     }
    }
    switch(Xtrategy){
      /*
@@ -146,6 +146,5 @@ int execute_test(int dtest_num)
 
  destroy_test(dh_test_types[dtest_num],dieharder_test);
 
- return(0);
-
+ return smallest_p;
 }

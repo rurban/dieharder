@@ -64,7 +64,7 @@ EXTERN double strategy;
  void time_rng();
  void set_globals();
  void choose_rng();
- int execute_test(int);
+ double execute_test(int);
  void run_all_tests();
  void run_test();
  void add_ui_rngs();

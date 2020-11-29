@@ -934,7 +934,9 @@ parameters are ignored and a set of defaults are used.  These standard
 parameters are chosen so that the tests will be ``reasonably'' sensitive
 and discriminating and hence can serve as a comparative RNG performance
 benchmark on the one hand and as a starting point for the parametric
-exploration of specific tests afterwards.
+exploration of specific tests afterwards. The {\tt -a} switch should
+always be combined with the {\tt -Y1} switch, to add a strategy to
+overcome the Multiple Comparisons Problem.
 
 A \die test consists of three subroutines.  These test are named
 according to the scheme:  
@@ -2829,6 +2831,10 @@ The following is the output from running {\tt dieharder -a -g 13}:
 # Kuiper KS: p = 0.337260 for STS Runs Test
 # Assessment:
 # PASSED at > 5%.
+#=============================================================================#
+#   mean  |  stddev  | p-value (best = 0.5, worst = 0.0)
+#=============================================================================#
+0.277456  |0.303046  |
 
 \end{verbatim}
 
@@ -4138,13 +4144,23 @@ with Dieharder and see what it tells us about its suitability as a RNG.
 # Kuiper KS: p = 0.000000 for STS Runs Test
 # Assessment:
 # FAILED at < 0.01%.
+#=============================================================================#
+#   mean  |  stddev  | p-value (best = 0.5, worst = 0.0)
+#=============================================================================#
+0.058426  |0.142950  |
+
 \end{verbatim}
 }
 
 We begin by noting that randu is about 40% faster than mt19937\_1999.
 After all, we should make every effort to explain why the RNG was quite
-popular and in widespread use back in the 70's.  Then the bad news
-begins.
+popular and in widespread use back in the 70's.
+
+Then the bad news begins.
+
+The statistical end result, the mean p-value of 0.058426 is extremely
+low.  This is calculated by taking all absolute differences of the all
+the p-values from the ideal p-value 0.5.
 
 The bit persistence test shows that randu has only 31 significant bits
 (signed integer) which is to be expected and not itself a problem.
@@ -5357,6 +5373,10 @@ Let us see what Dieharder makes of it:
 # Kuiper KS: p = 0.000000 for STS Runs Test
 # Assessment:
 # FAILED at < 0.01%.
+#=============================================================================#
+#   mean  |  stddev  | p-value (best = 0.5, worst = 0.0)
+#=============================================================================#
+0.015734  |0.037074  |
 
 \end{verbatim}
 }
