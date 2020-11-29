@@ -122,3 +122,7 @@ Preparing to run test 208.  ntuple = 0
 Preparing to run test 209.  ntuple = 0
         dab_monobit2|  12|  65000000|       1|0.71442765|  PASSED  
 Preparing to run test 210.  ntuple = 0
+#=============================================================================#
+#   mean  |  stddev  | p-value (best = 0.5, worst = 0.0)
+#=============================================================================#
+0.231678  |0.272629  |
