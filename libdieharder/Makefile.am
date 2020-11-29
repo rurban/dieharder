@@ -131,6 +131,7 @@ libdieharder_la_SOURCES = \
 	sts_runs.c \
 	sts_serial.c \
 	timing.c \
+	urb_badseeds.c \
 	Vtest.c \
 	version.c \
 	Xtest.c

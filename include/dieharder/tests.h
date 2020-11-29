@@ -39,6 +39,7 @@
 #include <dieharder/sts_monobit.h>
 #include <dieharder/sts_runs.h>
 #include <dieharder/sts_serial.h>
+#include <dieharder/urb_badseeds.h>
 
 /*
 #include <dieharder/marsaglia_tsang_gorilla.h>
@@ -86,6 +87,7 @@
    DAB_FILLTREE,
    DAB_FILLTREE2,
    DAB_MONOBIT2,
+   URB_BADSEEDS,
    N_RGB_TESTS
  } Rgb_Tests;
 

@@ -48,6 +48,7 @@ nobase_include_HEADERS = \
 	dieharder/sts_runs.h \
 	dieharder/sts_serial.h \
 	dieharder/tests.h \
+	dieharder/urb_badseeds.h \
 	dieharder/verbose.h \
 	dieharder/Vtest.h \
 	dieharder/Xtest.h
