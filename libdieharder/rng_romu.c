@@ -41,13 +41,19 @@ typedef struct romu_state romu_state_t;
 #define ROTL(d, lrot) ((d << (lrot)) | (d >> (64 - (lrot))))
 #endif
 
-static inline uint64_t romuQuad_random(romu_state_t *state) {
-  uint64_t wp = state->w, xp = state->x, yp = state->y, zp = state->z;
-  state->w = 15241094284759029579u * zp; // a-mult
-  state->x = zp + ROTL(wp, 52);          // b-rotl, c-add
-  state->y = yp - xp;                    // d-sub
-  state->z = yp + wp;                    // e-add
-  state->z = ROTL(state->z, 19);         // f-rotl
+
+static inline uint64_t romuDuoJr_random(romu_state_t *state) {
+  uint64_t xp = state->x, yp = state->y;
+  state->x = 15241094284759029579u * yp;
+  state->y = yp - xp;
+  state->y = ROTL(state->y, 27);
+  return xp;
+}
+
+static inline uint64_t romuDuo_random(romu_state_t *state) {
+  uint64_t xp = state->x, yp = state->y;
+  state->x = 15241094284759029579u * yp;
+  state->y = ROTL(state->y, 36) + ROTL(state->y, 15) - xp;
   return xp;
 }
 
@@ -61,13 +67,33 @@ static inline uint64_t romuTrio_random(romu_state_t *state) {
   return xp;
 }
 
-static inline uint64_t romuquad_next64(romu_state_t *state) {
-  return romuQuad_random(state);
+static inline uint64_t romuQuad_random(romu_state_t *state) {
+  uint64_t wp = state->w, xp = state->x, yp = state->y, zp = state->z;
+  state->w = 15241094284759029579u * zp; // a-mult
+  state->x = zp + ROTL(wp, 52);          // b-rotl, c-add
+  state->y = yp - xp;                    // d-sub
+  state->z = yp + wp;                    // e-add
+  state->z = ROTL(state->z, 19);         // f-rotl
+  return xp;
+}
+
+static inline uint64_t romuduojr_next64(romu_state_t *state) {
+  return romuDuoJr_random(state);
+}
+
+static inline uint64_t romuduo_next64(romu_state_t *state) {
+  return romuDuo_random(state);
 }
 
 static inline uint64_t romutrio_next64(romu_state_t *state) {
   return romuTrio_random(state);
 }
+
+static inline uint64_t romuquad_next64(romu_state_t *state) {
+  return romuQuad_random(state);
+}
+
+
 #if 0
 static void romu_seed(romu_state_t *state, uint64_t w, uint64_t x, uint64_t y, uint64_t z, int quad) {
     state->w = w;
@@ -85,13 +111,61 @@ static void romu_seed(romu_state_t *state, uint64_t w, uint64_t x, uint64_t y, u
 }
 #endif
 
+#define TO_DOUBLE(x)  ((x) >> 11) * 0x1.0p-53
+
+static unsigned long int romuduojr_get (void *vstate)
+{
+ romu_state_t *state = vstate;
+ return (unsigned long int)romuduojr_next64(state);
+}
+static double romuduojr_get_double (void *vstate)
+{
+ romu_state_t *state = vstate;
+ return TO_DOUBLE(romuduojr_next64(state));
+}
+static void
+romuduojr_set (void *vstate, unsigned long int seed)
+{
+ romu_state_t *state = (romu_state_t *) vstate;
+ state->w = (uint64_t)seed;
+ state->x = splitmix64_next(&state->w);
+ state->y = splitmix64_next(&state->x);
+ state->z = splitmix64_next(&state->y);
+ for (int i = 0; i < 10; i++) {
+   romuduojr_next64(state);
+ }
+ return;
+}
+
+static unsigned long int romuduo_get (void *vstate)
+{
+ romu_state_t *state = vstate;
+ return (unsigned long int)romuduo_next64(state);
+}
+static double romuduo_get_double (void *vstate)
+{
+ romu_state_t *state = vstate;
+ return TO_DOUBLE(romuduo_next64(state));
+}
+static void
+romuduo_set (void *vstate, unsigned long int seed)
+{
+ romu_state_t *state = (romu_state_t *) vstate;
+ state->w = (uint64_t)seed;
+ state->x = splitmix64_next(&state->w);
+ state->y = splitmix64_next(&state->x);
+ state->z = splitmix64_next(&state->y);
+ for (int i = 0; i < 10; i++) {
+   romuduo_next64(state);
+ }
+ return;
+}
+
 static unsigned long int romutrio_get (void *vstate)
 {
  romu_state_t *state = vstate;
  return (unsigned long int)romutrio_next64(state);
 }
-// 64bit only
-#define TO_DOUBLE(x)  ((x) >> 11) * 0x1.0p-53
 static double romutrio_get_double (void *vstate)
 {
  romu_state_t *state = vstate;
@@ -135,6 +209,24 @@ romuquad_set (void *vstate, unsigned long int seed)
  return;
 }
 
+static const gsl_rng_type romuduojr_type =
+{"romuduojr",			/* name */
+ UINT64_MAX,			/* RAND_MAX */
+ 0,				/* RAND_MIN */
+ sizeof (romu_state_t),
+ &romuduojr_set,
+ &romuduojr_get,
+ &romuduojr_get_double};
+
+static const gsl_rng_type romuduo_type =
+{"romuduo",			/* name */
+ UINT64_MAX,			/* RAND_MAX */
+ 0,				/* RAND_MIN */
+ sizeof (romu_state_t),
+ &romuduo_set,
+ &romuduo_get,
+ &romuduo_get_double};
+
 static const gsl_rng_type romutrio_type =
 {"romutrio",			/* name */
  UINT64_MAX,			/* RAND_MAX */
@@ -153,5 +245,7 @@ static const gsl_rng_type romuquad_type =
  &romuquad_get,
  &romuquad_get_double};
 
+const gsl_rng_type *gsl_rng_romuduojr = &romuduojr_type;
+const gsl_rng_type *gsl_rng_romuduo = &romuduo_type;
 const gsl_rng_type *gsl_rng_romutrio = &romutrio_type;
 const gsl_rng_type *gsl_rng_romuquad = &romuquad_type;

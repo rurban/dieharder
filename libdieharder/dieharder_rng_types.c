@@ -123,7 +123,7 @@ void dieharder_rng_types()
    ADD (gsl_rng_##x);                             \
    dh_num_dieharder_rngs++;                       \
  }
- 
+
  ADD_RNG (stdin_input_raw);
  ADD_RNG (file_input_raw);
  ADD_RNG (file_input);
@@ -174,6 +174,8 @@ void dieharder_rng_types()
  i = 230;
  ADD_RNG (lxm);
 #ifndef HAVE_32BITLONG
+ ADD_RNG (romuduojr);
+ ADD_RNG (romuduo);
  ADD_RNG (romutrio);
  ADD_RNG (romuquad);
 #endif
