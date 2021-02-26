@@ -76,6 +76,8 @@
  GSL_VAR const gsl_rng_type *gsl_rng_efiix64;			/* rurban Oct 2020 */
  GSL_VAR const gsl_rng_type *gsl_rng_hc128;			/* rurban Oct 2020 */
  GSL_VAR const gsl_rng_type *gsl_rng_lxm;			/* rurban Oct 2020 */
+ GSL_VAR const gsl_rng_type *gsl_rng_romuduojr;			/* rurban Oct 2020 */
+ GSL_VAR const gsl_rng_type *gsl_rng_romuduo;			/* rurban Oct 2020 */
  GSL_VAR const gsl_rng_type *gsl_rng_romutrio;			/* rurban Oct 2020 */
  GSL_VAR const gsl_rng_type *gsl_rng_romuquad;			/* rurban Oct 2020 */
  GSL_VAR const gsl_rng_type *gsl_rng_mt64;			/* rurban Oct 2020 */
