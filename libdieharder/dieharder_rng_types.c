@@ -179,24 +179,24 @@ void dieharder_rng_types()
  ADD_RNG (romutrio);
  ADD_RNG (romuquad);
 #endif
- i = 233;
+ i = 235;
  ADD_RNG (threefry2x32);
  ADD_RNG (threefry4x32);
 #ifndef HAVE_32BITLONG
  ADD_RNG (threefry2x64);
  ADD_RNG (threefry4x64);
 #endif
- i = 237;
+ i = 239;
  ADD_RNG (philox2x32);
  ADD_RNG (philox4x32);
 #ifndef HAVE_32BITLONG
  ADD_RNG (philox2x64);
  ADD_RNG (philox4x64);
- i = 241;
+ i = 243;
  ADD_RNG (mt64);
 #endif
 
- i = 242;
+ i = 244;
  // hardware dependent/optimized:
 #ifdef HAVE__RDRAND64_STEP
   if (rdrand_capable()){

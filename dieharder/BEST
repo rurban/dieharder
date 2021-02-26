@@ -5,5 +5,5 @@ xoroshiro64ss_g214_a.out:0  |    261519  |     267279  |
 xoshiro128++_g211_a.out:0   |    260260  |     246457  |
 xoroshiro64s_g215_a_Y1.out:0|    254123  |     272197  |
 lxm_232_a_Y1.out:0          |    215959  |     205161  |
-efiix64_g231_a.out	    |    173178  |     171191  |
+efiix64_g228_a.out	    |    173178  |     171191  |
 threefry2x64_g235_a_Y1.out:0|     94407  |      87967  |
