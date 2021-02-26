@@ -430,7 +430,7 @@ Available</h2></center>
 tested by dieharder:</p>
 <pre>
 #=============================================================================#
-#          dieharder version 3.29.4beta Copyright 2003 Robert G. Brown        #
+#          dieharder version 3.31.2beta Copyright 2003 Robert G. Brown        #
 #=============================================================================#
 #    Id Test Name           | Id Test Name           | Id Test Name           #
 #=============================================================================#
@@ -458,7 +458,26 @@ tested by dieharder:</p>
 #=============================================================================#
 |   200 stdin_input_raw     |201 file_input_raw      |202 file_input          |
 |   203 ca                  |204 uvag                |205 AES_OFB             |
-|   206 Threefish_OFB       |                        |                        |
+|   206 Threefish_OFB       |207 XOR                 |208 kiss                |
+|   209 superkiss           |210 wyrand              |211 xoshiro128++        |
+|   212 xoshiro128**        |213 xoshiro128+         |214 xoroshiro64**       |
+|   215 xoroshiro64*        |216 xoshiro256++        |217 xoshiro256**        |
+|   218 xoshiro256+         |219 xoroshiro128++      |220 xoroshiro128**      |
+|   221 xoroshiro128+       |222 jsf                 |223 jsf64               |
+|   224 pcg32               |225 pcg64               |226 pcg64_dxsm          |
+|   227 pcg64_cmdxsm        |228 efiix64             |229 hc-128              |
+|   230 lxm                 |231 romuduojr           |232 romuduo             |
+|   233 romutrio            |234 romuquad            |235 threefry2x32        |
+|   236 threefry4x32        |237 threefry2x64        |238 threefry4x64        |
+|   239 philox2x32          |240 philox4x32          |241 philox2x64          |
+|   242 philox4x64          |243 mt64                |244 rdrand              |
+|   245 chacha              |246 speck-128           |247 sfmt                |
+|   248 aesni               |249 splitmix64          |250 lehmer64            |
+|   251 mitchelmoore        |252 widynski            |253 xorshift32          |
+|   254 xorshift32-trunc    |255 xor128              |256 xorshift-k4         |
+|   257 xorshift-k5         |258 xorshift-add        |259 xorshift7           |
+|   260 xor4096             |261 xorshift128+        |262 xorshift1024+       |
+|   263 xorshift1024*       |264 drand48             |                        |
 #=============================================================================#
 |   400 R_wichmann_hill     |401 R_marsaglia_multic. |402 R_super_duper       |
 |   403 R_mersenne_twister  |404 R_knuth_taocp       |405 R_knuth_taocp2      |
@@ -624,16 +643,26 @@ gsl 2.6)</p>
 #=============================================================================#
 |   200 stdin_input_raw     |201 file_input_raw      |202 file_input          |
 |   203 ca                  |204 uvag                |205 AES_OFB             |
-|   206 Threefish_OFB       |207 XOR (supergenerator)|208 kiss                |
+|   206 Threefish_OFB       |207 XOR                 |208 kiss                |
 |   209 superkiss           |210 wyrand              |211 xoshiro128++        |
 |   212 xoshiro128**        |213 xoshiro128+         |214 xoroshiro64**       |
 |   215 xoroshiro64*        |216 xoshiro256++        |217 xoshiro256**        |
 |   218 xoshiro256+         |219 xoroshiro128++      |220 xoroshiro128**      |
 |   221 xoroshiro128+       |222 jsf                 |223 jsf64               |
-|   224 pcg32               |225 pcg64               |228 efiix64             |
-|   229 hc-128              |230 lxm                 |231 romutrio            |
-|   232 romuquad            |237 rdrand              |238 chacha              |
-|   239 speck-128           |240 sfmt                |                        |
+|   224 pcg32               |225 pcg64               |226 pcg64_dxsm          |
+|   227 pcg64_cmdxsm        |228 efiix64             |229 hc-128              |
+|   230 lxm                 |231 romuduojr           |232 romuduo             |
+|   233 romutrio            |234 romuquad            |235 threefry2x32        |
+|   236 threefry4x32        |237 threefry2x64        |238 threefry4x64        |
+|   239 philox2x32          |240 philox4x32          |241 philox2x64          |
+|   242 philox4x64          |243 mt64                |244 rdrand              |
+|   245 chacha              |246 speck-128           |247 sfmt                |
+|   248 aesni               |249 splitmix64          |250 lehmer64            |
+|   251 mitchelmoore        |252 widynski            |253 xorshift32          |
+|   254 xorshift32-trunc    |255 xor128              |256 xorshift-k4         |
+|   257 xorshift-k5         |258 xorshift-add        |259 xorshift7           |
+|   260 xor4096             |261 xorshift128+        |262 xorshift1024+       |
+|   263 xorshift1024*       |264 drand48             |                        |
 #=============================================================================#
 |   400 R_wichmann_hill     |401 R_marsaglia_multic. |402 R_super_duper       |
 |   403 R_mersenne_twister  |404 R_knuth_taocp       |405 R_knuth_taocp2      |
